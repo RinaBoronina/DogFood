@@ -1,19 +1,21 @@
 import React from 'react';
 import './header.css';
 import Logo from '../Logo/Logo';
-import Search from './Search/Search';
+import Search from '../Search/Search';
 import HeaderIcons from './HeaderIcons/HeaderIcons';
-import { useState } from 'react';
 
 export const Header = (props) => {
-    const [user, setUser] = useState(localStorage.getItem('user12'));
+    const setSearchQuery = (path) => {
+        // console.log(path);
+        props.setSearch(path);
+    };
     return (
         <header className="header">
             <div className="container">
                 <div className="header__wrapper">
                     <Logo />
-                    <Search setSearch={() => {}} />
-                    <HeaderIcons user={user} upd={setUser} />
+                    <Search setSearch={setSearchQuery} />
+                    <HeaderIcons />
                 </div>
             </div>
         </header>
